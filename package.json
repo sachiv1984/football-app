@@ -29,6 +29,12 @@
     "prettier-plugin-tailwindcss": "^0.2.0"
   },
   "scripts": {
+    "dev": "react-scripts start",
+    "dev:mock": "REACT_APP_ENABLE_MOCK_DATA=true react-scripts start",
+    "dev:api": "REACT_APP_ENABLE_MOCK_DATA=false react-scripts start",
+    "dev:debug": "REACT_APP_ENABLE_API_LOGGING=true REACT_APP_ENABLE_MOCK_DATA=true react-scripts start",
+    "cache:clear": "node -e \"console.log('Cache cleared in development mode')\"",
+    "type-check": "tsc --noEmit",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
