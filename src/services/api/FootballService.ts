@@ -262,3 +262,92 @@ class FootballService {
     
     return {
       data: getMockTeams(),
+      success: true,
+     timestamp: new Date().toISOString()
+   };
+ }
+
+ private async getMockTeam(id: string): Promise<ApiResponse<Team>> {
+   await this.simulateDelay();
+   const { getMockTeamById } = await import('./mockData');
+   const team = getMockTeamById(id);
+
+   if (!team) {
+     throw new Error(`Team with ID ${id} not found`);
+   }
+
+   return {
+     data: team,
+     success: true,
+     timestamp: new Date().toISOString()
+   };
+ }
+
+ private async getMockLeagueTable(): Promise<ApiResponse<LeagueTableRow[]>> {
+   await this.simulateDelay();
+   const { getMockLeagueTable } = await import('./mockData');
+   
+   return {
+     data: getMockLeagueTable(),
+     success: true,
+     timestamp: new Date().toISOString()
+   };
+ }
+
+ private async getMockAIInsights(fixtureId: string): Promise<ApiResponse<AIInsight[]>> {
+   await this.simulateDelay();
+   const { getMockAIInsights } = await import('./mockData');
+   
+   return {
+     data: getMockAIInsights(fixtureId),
+     success: true,
+     timestamp: new Date().toISOString()
+   };
+ }
+
+ private async getMockPlayerStats(fixtureId: string): Promise<ApiResponse<PlayerStats[]>> {
+   await this.simulateDelay();
+   const { getMockPlayerStats } = await import('./mockData');
+   
+   return {
+     data: getMockPlayerStats(fixtureId),
+     success: true,
+     timestamp: new Date().toISOString()
+   };
+ }
+
+ private async getMockSearchResults(query: string): Promise<ApiResponse<Team[]>> {
+   await this.simulateDelay();
+   const { searchMockTeams } = await import('./mockData');
+   
+   return {
+     data: searchMockTeams(query),
+     success: true,
+     timestamp: new Date().toISOString()
+   };
+ }
+
+ private async getMockCompetitions(): Promise<ApiResponse<Competition[]>> {
+   await this.simulateDelay();
+   const { getMockCompetitions } = await import('./mockData');
+   
+   return {
+     data: getMockCompetitions(),
+     success: true,
+     timestamp: new Date().toISOString()
+   };
+ }
+
+ /**
+  * Simulate network delay for mock data
+  */
+ private async simulateDelay(ms: number = 500): Promise<void> {
+   if (apiConfig.enableMockData && apiConfig.enableLogging) {
+     await new Promise(resolve => setTimeout(resolve, ms));
+   }
+ }
+}
+
+// Export singleton instance
+export const footballService = new FootballService();
+export default footballService;
