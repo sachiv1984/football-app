@@ -1,0 +1,95 @@
+// src/styles/mobile.css - Additional mobile-specific styles
+@layer utilities {
+  /* Safe area support for iOS */
+  .safe-area-pt {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-pl {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-pr {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Touch-friendly tap targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent text selection on touch */
+  .no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Smooth scrolling on mobile */
+  .smooth-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbars on mobile */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mobile card shadows */
+  .mobile-card-shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mobile button active states */
+  .mobile-btn-active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  /* Backdrop blur for modals */
+  .backdrop-blur-mobile {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Mobile-specific responsive classes */
+@media (max-width: 640px) {
+  .mobile-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mobile-grid-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+
+  .mobile-p-2 {
+    padding: 0.5rem;
+  }
+
+  .mobile-m-2 {
+    margin: 0.5rem;
+  }
+}
