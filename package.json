@@ -42,6 +42,14 @@
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write src/**/*.{ts,tsx,css,md}"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:accessibility": "jest --testPathPattern=accessibility",
+    "test:performance": "jest --testPathPattern=performance",
+    "test:all": "npm run test && npm run test:e2e"
   },
   "browserslist": {
     "production": [
