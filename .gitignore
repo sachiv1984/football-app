@@ -1,0 +1,12 @@
+# Environment files
+.env*
+!.env.example
+
+# API Keys and credentials
+**/api-keys.json
+**/*-credentials.*
+**/secrets.*
+
+# Development logs
+debug.log
+api-debug.log
